@@ -8,7 +8,9 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class SearchDB {
-    public String SearchDB(String english){
+
+    //Tìm kiếm nghĩa của từ Tiếng Anh nhập vào
+    public String Translate(String english){
         connectDB cnn1 = new connectDB();
         String searchSql = "SELECT vietnamese FROM Translate WHERE english_Word = ?";
         try(Connection cnn = cnn1.conectDatabase();
