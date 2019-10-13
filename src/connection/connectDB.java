@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class connectDB {
     // Tạo connection tới database
-    public Connection conectDatabase() {
+    public Connection connectDatabase() {
         Connection cnn = null;
         try {
             String url = "jdbc:sqlite:database//Dictionary.db";
