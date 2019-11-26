@@ -155,7 +155,7 @@ public class SavedWord implements Initializable {
         Stage stage = (Stage) exitbutton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         Parent result = loader.load(getClass().getResource("/sample/View/start.fxml"));
-        stage.setTitle("My dictionary");
+        stage.setTitle("LaLaDi");
         stage.setScene(new Scene(result));
         stage.show();
     }

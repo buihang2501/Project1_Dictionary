@@ -14,7 +14,7 @@ public class Main extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/sample/View/start.fxml"));
             Scene scene = new Scene(root);
             //scene.getStylesheets().add(getClass().getResource("search.css").toExternalForm());
-            primaryStage.setTitle("My Dictionary");
+            primaryStage.setTitle("LaLaDi");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e){
