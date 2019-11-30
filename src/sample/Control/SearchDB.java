@@ -33,4 +33,21 @@ public class SearchDB {
         }
         return list;
     }
+
+    public List<String> list_eng() {
+        String sql = "SELECT * FROM Translate";
+        List<String> list = new ArrayList<String>();
+        try {
+            connectDB cnn = new connectDB();
+            ResultSet rs = cnn.chonDuLieu(sql);
+            while (rs.next()) {
+                String eng = rs.getString(1);
+                list.add(eng);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

@@ -16,12 +16,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.TouchPoint;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 import sample.Model.Meaning;
 import sample.Model.Word;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -44,11 +46,19 @@ public class Search implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Set các thuộc tính của bảng
         type.setCellValueFactory(new PropertyValueFactory<Meaning, String>("type"));
         vietnam.setCellValueFactory(new PropertyValueFactory<Meaning, String>("vietnam"));
         example.setCellValueFactory(new PropertyValueFactory<Meaning, String>("example"));
+
+        //Tạo Autocomplete cho input người dùng nhập vào
+        List<String> list = new ArrayList<String>();
+        SearchDB l = new SearchDB();
+        list = l.list_eng();
+        TextFields.bindAutoCompletion(englishword,list);
     }
 
+    //Hàm thực hiện nhận phím Enter khi người dùng nhập
     public void key(KeyEvent keyEvent) throws SQLException {
         if(keyEvent.getCode() == KeyCode.ENTER){
             String newword = englishword.getText().toLowerCase().trim();
@@ -67,10 +77,12 @@ public class Search implements Initializable {
                     meaningList.add(list.get(i));
                 }
             }
+            //Hiển thị meaningList ra table
             tableMean.setItems(meaningList);
         }
     }
 
+    //Action của button Search
     public void search(ActionEvent event) throws SQLException {
         Word word = new Word();
         word.setEnglish_Word(englishword.getText().toLowerCase());
